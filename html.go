@@ -505,8 +505,10 @@ func (options *Html) Image(out *bytes.Buffer, link []byte, title []byte, alt []b
 	if options.flags&HTML_SKIP_IMAGES != 0 {
 		return
 	}
-
-	out.WriteString("<img src=\"")
+	out.WriteString("<figure class=\"post-featured\"><figcaption>")
+	attrEscape(out, alt)
+	out.WriteString("</figcaption>")
+	out.WriteString("<amp-img width=\"16\" height=\"9\" src=\"")
 	options.maybeWriteAbsolutePrefix(out, link)
 	attrEscape(out, link)
 	out.WriteString("\" alt=\"")
@@ -520,6 +522,7 @@ func (options *Html) Image(out *bytes.Buffer, link []byte, title []byte, alt []b
 
 	out.WriteByte('"')
 	out.WriteString(options.closeTag)
+	out.WriteString(`</figure>`)
 }
 
 func (options *Html) LineBreak(out *bytes.Buffer) {
