@@ -508,7 +508,7 @@ func (options *Html) Image(out *bytes.Buffer, link []byte, title []byte, alt []b
 	out.WriteString("<figure class=\"post-featured\"><figcaption>")
 	attrEscape(out, alt)
 	out.WriteString("</figcaption>")
-	out.WriteString("<amp-img width=\"16\" height=\"9\" src=\"")
+	out.WriteString("<amp-img width=\"16\" height=\"9\" layout=\"responsive\" src=\"")
 	options.maybeWriteAbsolutePrefix(out, link)
 	attrEscape(out, link)
 	out.WriteString("\" alt=\"")
